@@ -8,8 +8,8 @@ on:
     branches:
       - main
 
-#  schedule:
-#    - cron: '*/5 * * * *'
+schedule:
+- cron: '*/5 * * * *'
 
 jobs:
   tests:
@@ -41,8 +41,8 @@ jobs:
       - name: Install dependencies
         run: |
           composer update --prefer-dist --no-progress
-      - name: Run test suite
-        run: |
+      - name: Run script
+        run: php index.php
           vendor/bin/phpunit --color tests/
         env:
           OCI_REGION: ${{ secrets.OCI_REGION }}
