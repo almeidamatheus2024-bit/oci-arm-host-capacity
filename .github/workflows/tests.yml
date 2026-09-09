@@ -10,6 +10,7 @@ on:
 
 schedule:
 - cron: '*/5 * * * *'
+workflow_dispatch:
 
 jobs:
   tests:
@@ -43,7 +44,6 @@ jobs:
           composer update --prefer-dist --no-progress
       - name: Run script
         run: php index.php
-          vendor/bin/phpunit --color tests/
         env:
           OCI_REGION: ${{ secrets.OCI_REGION }}
           OCI_USER_ID: ${{ secrets.OCI_USER_ID }}
